@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-prod": "node server.js",
+    "server-dev": "npx nodemon server.js",
+    "seed:data": "node seeder/seeder",
+    "seed:data-d": "node seeder/seeder -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-fileupload": "^1.4.3",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.0",
+    "nodemon": "^3.1.0",
+    "socket.io": "^4.7.4",
+    "uuid": "^9.0.1"
+  }
+}
