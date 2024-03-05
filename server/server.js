@@ -33,18 +33,20 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
 
-// const apiRoutes = require("./routes/apiRoutes");
-
 // mongodb connection
 const connectDB = require("./config/db");
 connectDB();
 
-// app.use("/api", apiRoutes);
+//refactored api routes
+const apiRoutes = require("./routes/apiRoutes");
+
+app.use("/api", apiRoutes);
 app.get("/appointments", (req, res) => {
   return res.send("hello world");
 });
 
 const path = require("path");
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
   app.get("*", (req, res) =>
