@@ -1,0 +1,26 @@
+.mesh-bg {
+  background: #c7c8eb;
+  background-image: radial-gradient(at 16% 65%, #f8c8fa 0px, transparent 50%),
+    radial-gradient(at 4% 15%, #bbe1f2 0px, transparent 50%),
+    radial-gradient(at 58% 8%, #f7fce6 0px, transparent 50%),
+    radial-gradient(at 59% 52%, #eefadc 0px, transparent 50%),
+    radial-gradient(at 98% 30%, #d0d8f7 0px, transparent 50%);
+}
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  animation: moveCarousel 45s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes moveCarousel {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%); /* Move one item width to the left */
+  }
+}
