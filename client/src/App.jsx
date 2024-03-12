@@ -6,6 +6,10 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Contact from "./pages/Contact.jsx";
 import HospitalInfo from "./pages/HospitalInfo.jsx";
+import Emergency from "./pages/Emergency.jsx";
+import Appointments from "./pages/Appointments.jsx";
+import Nutrition from "./pages/Nutrition.jsx";
+import MentalHealth from "./pages/MentalHealth.jsx";
 import Cart from "./pages/Cart.jsx";
 import "./App.css";
 
@@ -34,8 +38,13 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-confirm" element={<OrderConfirm />} />
+
               <Route path="/profile" element={<Profile />} />
               <Route path="/hospitals" element={<HospitalInfo />} />
+              <Route path="/emergency" element={<Emergency />} />
+              <Route path="/nutrition" element={<Nutrition />} />
+              <Route path="/mental-health" element={<MentalHealth />} />
+              <Route path="/appointments" element={<Appointments />} />
             </Routes>
             <Footer />
           </Router>

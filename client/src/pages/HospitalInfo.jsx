@@ -47,9 +47,9 @@ function HospitalInfo() {
       <div className="grid lg:grid-cols-2 gap-8">
         {currentItems.map((val, k) => (
           <div id="hospitalDetails" key={k} className="mx-4">
-            <Card variant="outlined">
+            <Card variant="outlined" className="p-2">
               <React.Fragment>
-                <CardContent>
+                <CardContent className="max-h-44 overflow-y-auto">
                   <Typography variant="h5" component="div">
                     {val.name}
                   </Typography>
@@ -72,6 +72,7 @@ function HospitalInfo() {
                     href={val.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    variant="outlined"
                   >
                     Details
                   </Button>
@@ -81,11 +82,11 @@ function HospitalInfo() {
           </div>
         ))}
       </div>
-      <div className="my-4">
+      <div className="my-8">
         <Typography variant="body1" component="div" align="center">
           Page {currentPage} of {totalPages}
         </Typography>
-        <div className="mb-8">
+        <div className="my-4 flex justify-center">
           <Pagination
             count={totalPages}
             page={currentPage}
