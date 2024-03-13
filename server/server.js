@@ -37,13 +37,9 @@ app.use(fileUpload());
 const connectDB = require("./config/db");
 connectDB();
 
-//refactored api routes
+// refactored api routes
 const apiRoutes = require("./routes/apiRoutes");
-
 app.use("/api", apiRoutes);
-app.get("/appointments", (req, res) => {
-  return res.send("hello world");
-});
 
 const path = require("path");
 
@@ -58,14 +54,10 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// Error handling middleware
 app.use((error, req, res, next) => {
   if (process.env.NODE_ENV === "development") {
     console.error(error);
-  }
-  next(error);
-});
-app.use((error, req, res, next) => {
-  if (process.env.NODE_ENV === "development") {
     res.status(500).json({
       message: error.message,
       stack: error.stack,
