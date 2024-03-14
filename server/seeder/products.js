@@ -35,15 +35,7 @@ const products = [
     rating: 4.5,
     images: [{ path: "/images/medicine-13.jpg" }],
   },
-  {
-    name: "Ibuprofen",
-    description:
-      "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) used to relieve pain and reduce fever.",
-    category: "Antipyretics",
-    price: 15.0,
-    rating: 4.4,
-    images: [{ path: "/images/medicine-1.jpg" }],
-  },
+
   {
     name: "Acetaminophen",
     description:

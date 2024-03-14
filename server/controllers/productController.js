@@ -20,12 +20,16 @@ const getProducts = async (req, res, next) => {
       };
 
       aggregationPipeline.push(atlasSearchQuery);
-      if (category) {
-        pipeline.push({ $match: { category: category } });
-      }
-      const products = await Product.aggregate(pipeline);
-      res.status(200).json(products);
     }
+    if (category) {
+      pipeline.push({ $match: { category: category } });
+    }
+    if (!searchQuery && !category) {
+      const allProducts = await Product.find({}).select("name price image");
+      return res.status(200).json(allProducts);
+    }
+    const products = await Product.aggregate(pipeline);
+    res.status(200).json(products);
   } catch (error) {
     next(error);
   }
@@ -34,7 +38,7 @@ const autocomplete = async (req, res, next) => {
   try {
     const searchQuery = req.query.searchQuery;
     if (searchQuery) {
-      const products = await Product.aggregate([
+      const nameResults = await Product.aggregate([
         {
           $search: {
             index: "autocompleteProducts",
@@ -45,7 +49,6 @@ const autocomplete = async (req, res, next) => {
             },
           },
         },
-
         {
           $project: {
             _id: 0,
@@ -53,7 +56,28 @@ const autocomplete = async (req, res, next) => {
           },
         },
       ]);
-      res.status(200).json(products);
+
+      const descriptionResults = await Product.aggregate([
+        {
+          $search: {
+            index: "autocompleteProducts",
+            autocomplete: {
+              query: searchQuery,
+              path: "description",
+              tokenOrder: "sequential",
+            },
+          },
+        },
+        {
+          $project: {
+            _id: 0,
+            name: 1,
+          },
+        },
+      ]);
+
+      const mergedResults = [...nameResults, ...descriptionResults];
+      res.status(200).json(mergedResults);
     }
   } catch (error) {
     next(error);
