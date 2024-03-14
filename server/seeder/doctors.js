@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Doctor = require("../models/DoctorModel.js");
 
 const generateRandomSchedule = () => {
   const daysOfWeek = [
@@ -19,7 +18,6 @@ const generateRandomSchedule = () => {
     const timeSlots = [];
     for (let j = 0; j <= 5; j++) {
       const hours = Math.floor(7 + Math.random() * (21 + 1 - 7));
-
       const minutes = Math.floor(Math.random() * 4) * 15;
       const time = `${hours.toString().padStart(2, "0")}:${minutes
         .toString()
@@ -30,7 +28,8 @@ const generateRandomSchedule = () => {
   }
   return schedule;
 };
-const generateRandomDoctor = () => {
+
+const generateRandomDoctor = (randomIndex) => {
   const names = [
     "Dr. John Doe",
     "Dr. Jane Smith",
@@ -128,7 +127,6 @@ const generateRandomDoctor = () => {
     "Ophthalmology",
   ];
 
-  const randomIndex = Math.floor(Math.random() * names.length);
   const name = names[randomIndex];
   const contact = contacts[randomIndex];
   const chamberName = chamberNames[randomIndex];
@@ -147,14 +145,15 @@ const generateRandomDoctor = () => {
     chamberCity,
     chamberState,
     chamberZipcode,
-
     schedule: generateRandomSchedule(),
   };
 
   return doctor;
 };
+
 const doctors = [];
-for (let i = 0; i < 10; i++) {
-  doctors.push(generateRandomDoctor());
+for (let i = 0; i < 9; i++) {
+  doctors.push(generateRandomDoctor(i));
 }
+
 module.exports = doctors;

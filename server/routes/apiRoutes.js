@@ -5,6 +5,7 @@ const categoryRoutes = require("./categoryRoutes");
 const userRoutes = require("./userRoutes");
 const appointmentRoutes = require("./appointmentRoutes");
 const orderRoutes = require("./orderRoutes");
+const doctorRoutes = require("./doctorRoutes");
 
 const jwt = require("jsonwebtoken");
 
@@ -23,6 +24,7 @@ app.get("/get-token", (req, res) => {
 });
 
 app.use("/products", productRoutes);
+app.use("/doctors", doctorRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/users", userRoutes);
 app.use("/orders", orderRoutes);

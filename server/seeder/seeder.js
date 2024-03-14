@@ -7,14 +7,14 @@ const productData = require("./products");
 // const reviewData = require("./reviews");
 // const userData = require("./users");
 // const orderData = require("./orders");
-//const doctorsData = require("./doctors");
+const doctorsData = require("./doctors");
 
 // const Category = require("../models/CategoryModel");
 const Product = require("../models/ProductModel");
 // const Review = require("../models/ReviewModel");
 // const User = require("../models/UserModel");
 // const Order = require("../models/OrderModel");
-//const Doctor = require("../models/DoctorModel");
+const Doctor = require("../models/DoctorModel");
 
 const importData = async () => {
   try {
@@ -30,7 +30,7 @@ const importData = async () => {
 
     if (process.argv[2] !== "-d") {
       // await Category.insertMany(categoryData);
-      //await Doctor.insertMany(doctorsData);
+      await Doctor.insertMany(doctorsData);
       // const reviews = await Review.insertMany(reviewData);
       // const sampleProducts = productData.map((product) => {
       //   reviews.map((review) => {
@@ -38,7 +38,7 @@ const importData = async () => {
       //   });
       //   return { ...product };
       // });
-      await Product.insertMany(productData);
+      //await Product.insertMany(productData);
       // await User.insertMany(userData);
       // await Order.insertMany(orderData);
 
