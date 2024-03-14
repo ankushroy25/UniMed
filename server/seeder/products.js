@@ -6,7 +6,11 @@ const products = [
     category: "Antibiotics",
     price: 50.0,
     rating: 4.3,
-    images: [{ path: "/images/medicine-1.jpg" }],
+    images: [
+      { path: "/images/medicine-1.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Ciprofloxacin",
@@ -15,7 +19,11 @@ const products = [
     category: "Antibiotics",
     price: 45.0,
     rating: 4.1,
-    images: [{ path: "/images/medicine-2.jpg" }],
+    images: [
+      { path: "/images/medicine-2.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Crocin",
@@ -24,7 +32,11 @@ const products = [
     category: "Analgesics",
     price: 15.0,
     rating: 4.2,
-    images: [{ path: "/images/medicine-5.jpg" }],
+    images: [
+      { path: "/images/medicine-3.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Paracetamol",
@@ -33,9 +45,25 @@ const products = [
     category: "Analgesics",
     price: 20.0,
     rating: 4.5,
-    images: [{ path: "/images/medicine-13.jpg" }],
+    images: [
+      { path: "/images/medicine-4.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
-
+  {
+    name: "FeverQuell",
+    description:
+      "FeverQuell is an innovative antipyretic medication formulated to rapidly reduce fever and provide long-lasting relief.",
+    category: "Antipyretics",
+    price: 25.0,
+    rating: 4.8,
+    images: [
+      { path: "/images/medicine-5.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
+  },
   {
     name: "Acetaminophen",
     description:
@@ -43,7 +71,11 @@ const products = [
     category: "Antipyretics",
     price: 10.0,
     rating: 4.6,
-    images: [{ path: "path/to/acetaminophen.jpg" }],
+    images: [
+      { path: "/images/medicine-6.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Betadine",
@@ -52,7 +84,11 @@ const products = [
     category: "Antiseptics",
     price: 25.0,
     rating: 4.6,
-    images: [{ path: "path/to/betadine.jpg" }],
+    images: [
+      { path: "/images/medicine-7.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-47.jpg" },
+    ],
   },
   {
     name: "Chlorhexidine",
@@ -61,7 +97,11 @@ const products = [
     category: "Antiseptics",
     price: 30.0,
     rating: 4.7,
-    images: [{ path: "path/to/chlorhexidine.jpg" }],
+    images: [
+      { path: "/images/medicine-8.jpg" },
+      { path: "/images/medicine-45.jpg" },
+      { path: "/images/medicine-46.jpg" },
+    ],
   },
   {
     name: "Acyclovir",
@@ -70,7 +110,11 @@ const products = [
     category: "Antivirals",
     price: 35.0,
     rating: 4.2,
-    images: [{ path: "path/to/acyclovir.jpg" }],
+    images: [
+      { path: "/images/medicine-9.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-47.jpg" },
+    ],
   },
   {
     name: "Oseltamivir",
@@ -79,7 +123,11 @@ const products = [
     category: "Antivirals",
     price: 40.0,
     rating: 4.4,
-    images: [{ path: "path/to/oseltamivir.jpg" }],
+    images: [
+      { path: "/images/medicine-10.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Fluconazole",
@@ -88,7 +136,11 @@ const products = [
     category: "Antifungals",
     price: 25.0,
     rating: 4.0,
-    images: [{ path: "path/to/fluconazole.jpg" }],
+    images: [
+      { path: "/images/medicine-11.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Ketoconazole",
@@ -97,7 +149,11 @@ const products = [
     category: "Antifungals",
     price: 30.0,
     rating: 4.2,
-    images: [{ path: "path/to/ketoconazole.jpg" }],
+    images: [
+      { path: "/images/medicine-12.jpeg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Ranitidine",
@@ -106,7 +162,11 @@ const products = [
     category: "Antacids",
     price: 25.0,
     rating: 4.0,
-    images: [{ path: "path/to/ranitidine.jpg" }],
+    images: [
+      { path: "/images/medicine-13.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Aluminum Hydroxide",
@@ -115,7 +175,11 @@ const products = [
     category: "Antacids",
     price: 18.0,
     rating: 4.3,
-    images: [{ path: "path/to/aluminum_hydroxide.jpg" }],
+    images: [
+      { path: "/images/medicine-14.jpg" },
+      { path: "/images/medicine-45.jpg" },
+      { path: "/images/medicine-46.jpg" },
+    ],
   },
   {
     name: "Ibuprofen",
@@ -124,7 +188,11 @@ const products = [
     category: "Anti-inflammatory drugs",
     price: 15.0,
     rating: 4.4,
-    images: [{ path: "path/to/ibuprofen.jpg" }],
+    images: [
+      { path: "/images/medicine-15.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Diclofenac",
@@ -133,7 +201,11 @@ const products = [
     category: "Anti-inflammatory drugs",
     price: 18.0,
     rating: 4.3,
-    images: [{ path: "path/to/diclofenac.jpg" }],
+    images: [
+      { path: "/images/medicine-16.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-47.jpg" },
+    ],
   },
   {
     name: "Warfarin",
@@ -142,7 +214,11 @@ const products = [
     category: "Anticoagulants",
     price: 40.0,
     rating: 4.5,
-    images: [{ path: "path/to/warfarin.jpg" }],
+    images: [
+      { path: "/images/medicine-17.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Heparin",
@@ -151,7 +227,11 @@ const products = [
     category: "Anticoagulants",
     price: 35.0,
     rating: 4.6,
-    images: [{ path: "path/to/heparin.jpg" }],
+    images: [
+      { path: "/images/medicine-18.jpg" },
+      { path: "/images/medicine-45.jpg" },
+      { path: "/images/medicine-46.jpg" },
+    ],
   },
   {
     name: "Sertraline",
@@ -160,7 +240,11 @@ const products = [
     category: "Antidepressants",
     price: 45.0,
     rating: 4.7,
-    images: [{ path: "path/to/sertraline.jpg" }],
+    images: [
+      { path: "/images/medicine-19.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Fluoxetine",
@@ -169,7 +253,11 @@ const products = [
     category: "Antidepressants",
     price: 50.0,
     rating: 4.8,
-    images: [{ path: "path/to/fluoxetine.jpg" }],
+    images: [
+      { path: "/images/medicine-20.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Gabapentin",
@@ -178,7 +266,11 @@ const products = [
     category: "Anticonvulsants",
     price: 27.0,
     rating: 4.5,
-    images: [{ path: "path/to/gabapentin.jpg" }],
+    images: [
+      { path: "/images/medicine-21.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Carbamazepine",
@@ -187,7 +279,11 @@ const products = [
     category: "Anticonvulsants",
     price: 22.0,
     rating: 4.3,
-    images: [{ path: "path/to/carbamazepine.jpg" }],
+    images: [
+      { path: "/images/medicine-22.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Loratadine",
@@ -196,7 +292,11 @@ const products = [
     category: "Antihistamines",
     price: 15.0,
     rating: 4.4,
-    images: [{ path: "path/to/loratadine.jpg" }],
+    images: [
+      { path: "/images/medicine-23.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Cetirizine",
@@ -205,7 +305,11 @@ const products = [
     category: "Antihistamines",
     price: 12.0,
     rating: 4.3,
-    images: [{ path: "path/to/cetirizine.jpg" }],
+    images: [
+      { path: "/images/medicine-24.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Amlodipine",
@@ -214,7 +318,11 @@ const products = [
     category: "Antihypertensive drugs",
     price: 20.0,
     rating: 4.5,
-    images: [{ path: "path/to/amlodipine.jpg" }],
+    images: [
+      { path: "/images/medicine-25.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Losartan",
@@ -223,7 +331,11 @@ const products = [
     category: "Antihypertensive drugs",
     price: 22.0,
     rating: 4.6,
-    images: [{ path: "path/to/losartan.jpg" }],
+    images: [
+      { path: "/images/medicine-26.jpeg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Salbutamol",
@@ -232,7 +344,11 @@ const products = [
     category: "Bronchodilators",
     price: 18.0,
     rating: 4.4,
-    images: [{ path: "path/to/salbutamol.jpg" }],
+    images: [
+      { path: "/images/medicine-27.jpeg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-45.jpg" },
+    ],
   },
   {
     name: "Formoterol",
@@ -241,7 +357,11 @@ const products = [
     category: "Bronchodilators",
     price: 25.0,
     rating: 4.7,
-    images: [{ path: "path/to/formoterol.jpg" }],
+    images: [
+      { path: "/images/medicine-28.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-45.jpg" },
+    ],
   },
   {
     name: "Furosemide",
@@ -250,7 +370,11 @@ const products = [
     category: "Diuretics",
     price: 15.0,
     rating: 4.2,
-    images: [{ path: "path/to/furosemide.jpg" }],
+    images: [
+      { path: "/images/medicine-29.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Hydrochlorothiazide",
@@ -259,7 +383,11 @@ const products = [
     category: "Diuretics",
     price: 12.0,
     rating: 4.3,
-    images: [{ path: "path/to/hydrochlorothiazide.jpg" }],
+    images: [
+      { path: "/images/medicine-30.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Levonorgestrel",
@@ -268,7 +396,11 @@ const products = [
     category: "Hormonal drugs",
     price: 30.0,
     rating: 4.5,
-    images: [{ path: "path/to/levonorgestrel.jpg" }],
+    images: [
+      { path: "/images/medicine-31.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Ethinyl Estradiol",
@@ -277,7 +409,11 @@ const products = [
     category: "Hormonal drugs",
     price: 35.0,
     rating: 4.6,
-    images: [{ path: "path/to/ethinyl_estradiol.jpg" }],
+    images: [
+      { path: "/images/medicine-32.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Mycophenolate Mofetil",
@@ -286,7 +422,11 @@ const products = [
     category: "Immunosuppressants",
     price: 60.0,
     rating: 4.4,
-    images: [{ path: "path/to/mycophenolate_mofetil.jpg" }],
+    images: [
+      { path: "/images/medicine-33.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Tacrolimus",
@@ -295,7 +435,11 @@ const products = [
     category: "Immunosuppressants",
     price: 70.0,
     rating: 4.6,
-    images: [{ path: "path/to/tacrolimus.jpg" }],
+    images: [
+      { path: "/images/medicine-34.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-47.jpg" },
+    ],
   },
   {
     name: "Cyclobenzaprine",
@@ -304,7 +448,11 @@ const products = [
     category: "Muscle relaxants",
     price: 25.0,
     rating: 4.2,
-    images: [{ path: "path/to/cyclobenzaprine.jpg" }],
+    images: [
+      { path: "/images/medicine-35.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Baclofen",
@@ -313,7 +461,11 @@ const products = [
     category: "Muscle relaxants",
     price: 30.0,
     rating: 4.5,
-    images: [{ path: "path/to/baclofen.jpg" }],
+    images: [
+      { path: "/images/medicine-36.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Diazepam",
@@ -322,7 +474,11 @@ const products = [
     category: "Sedatives",
     price: 20.0,
     rating: 4.3,
-    images: [{ path: "path/to/diazepam.jpg" }],
+    images: [
+      { path: "/images/medicine-37.jpg" },
+      { path: "/images/medicine-45.jpg" },
+      { path: "/images/medicine-46.jpg" },
+    ],
   },
   {
     name: "Lorazepam",
@@ -331,7 +487,11 @@ const products = [
     category: "Sedatives",
     price: 18.0,
     rating: 4.4,
-    images: [{ path: "path/to/lorazepam.jpg" }],
+    images: [
+      { path: "/images/medicine-38.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Caffeine",
@@ -340,7 +500,11 @@ const products = [
     category: "Stimulants",
     price: 10.0,
     rating: 4.6,
-    images: [{ path: "path/to/caffeine.jpg" }],
+    images: [
+      { path: "/images/medicine-39.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-45.jpg" },
+    ],
   },
   {
     name: "Methylphenidate",
@@ -349,7 +513,11 @@ const products = [
     category: "Stimulants",
     price: 15.0,
     rating: 4.7,
-    images: [{ path: "path/to/methylphenidate.jpg" }],
+    images: [
+      { path: "/images/medicine-40.jpg" },
+      { path: "/images/medicine-43.jpg" },
+      { path: "/images/medicine-44.jpg" },
+    ],
   },
   {
     name: "Influenza Vaccine",
@@ -357,7 +525,11 @@ const products = [
     category: "Vaccines",
     price: 50.0,
     rating: 4.8,
-    images: [{ path: "path/to/influenza_vaccine.jpg" }],
+    images: [
+      { path: "/images/medicine-41.jpg" },
+      { path: "/images/medicine-45.jpg" },
+      { path: "/images/medicine-46.jpg" },
+    ],
   },
   {
     name: "Measles, Mumps, and Rubella Vaccine",
@@ -366,7 +538,11 @@ const products = [
     category: "Vaccines",
     price: 60.0,
     rating: 4.9,
-    images: [{ path: "path/to/mmr_vaccine.jpg" }],
+    images: [
+      { path: "/images/medicine-42.jpg" },
+      { path: "/images/medicine-46.jpg" },
+      { path: "/images/medicine-45.jpg" },
+    ],
   },
 ];
 
