@@ -4,7 +4,10 @@ const getProducts = async (req, res, next) => {
   try {
     const category = req.query.category;
     const searchQuery = req.query.searchQuery;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
     const pipeline = [];
+    let totalPages = 0;
     if (searchQuery) {
       const atlasSearchQuery = {
         $search: {
@@ -19,21 +22,36 @@ const getProducts = async (req, res, next) => {
         },
       };
 
-      aggregationPipeline.push(atlasSearchQuery);
+      pipeline.push(atlasSearchQuery);
     }
     if (category) {
       pipeline.push({ $match: { category: category } });
     }
     if (!searchQuery && !category) {
-      const allProducts = await Product.find({}).select("name price image");
-      return res.status(200).json(allProducts);
+      totalPages = Math.ceil((await Product.countDocuments()) / limit);
+      const allProducts = await Product.find({})
+        .select("name price image")
+        .skip((page - 1) * limit)
+        .limit(limit);
+      return res.status(200).json({ products: allProducts, totalPages });
     }
+    pipeline.push({ $skip: (page - 1) * limit });
+    pipeline.push({ $limit: limit });
+
     const products = await Product.aggregate(pipeline);
-    res.status(200).json(products);
+
+    // Calculate total count of documents after applying the pipeline
+    const totalProductsCount = await Product.aggregate([
+      ...pipeline,
+      { $count: "total" },
+    ]);
+    totalPages = Math.ceil(totalProductsCount[0].total / limit);
+    res.status(200).json({ products, totalPages });
   } catch (error) {
     next(error);
   }
 };
+
 const autocomplete = async (req, res, next) => {
   try {
     const searchQuery = req.query.searchQuery;
@@ -83,6 +101,7 @@ const autocomplete = async (req, res, next) => {
     next(error);
   }
 };
+
 const getProductById = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
