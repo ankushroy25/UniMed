@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
 const colors = require("colors");
+const path = require("path");
 
 app.use(
   helmet({
@@ -28,7 +29,7 @@ app.use(
     ],
   })
 );
-
+app.use("/api/images", express.static(path.join(__dirname, "/images")));
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
@@ -37,11 +38,8 @@ app.use(fileUpload());
 const connectDB = require("./config/db");
 connectDB();
 
-// refactored api routes
 const apiRoutes = require("./routes/apiRoutes");
 app.use("/api", apiRoutes);
-
-const path = require("path");
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));

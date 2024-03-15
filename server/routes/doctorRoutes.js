@@ -7,6 +7,6 @@ const {
 
 router.get("/", getDoctors);
 
-router.get("/get-one/:id", getDoctorById);
+router.get("/:id", getDoctorById);
 
 module.exports = router;

@@ -36,14 +36,20 @@ const getDoctors = async (req, res, next) => {
     if (!searchQuery && !specialty) {
       totalPages = Math.ceil((await Doctor.countDocuments()) / limit);
       const allDoctors = await Doctor.find({})
-        .select("name specialty chamberAddress contact")
+        .select("name specialty chamberAddress contact profileImage")
         .skip((page - 1) * limit)
         .limit(limit);
       return res.status(200).json({ doctors: allDoctors, totalPages });
     }
 
     aggregationPipeline.push({
-      $project: { name: 1, specialty: 1, chamberAddress: 1, contact: 1 },
+      $project: {
+        name: 1,
+        specialty: 1,
+        chamberAddress: 1,
+        contact: 1,
+        profileImage: 1,
+      },
     });
     aggregationPipeline.push({ $skip: (page - 1) * limit });
     aggregationPipeline.push({ $limit: limit });

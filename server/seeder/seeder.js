@@ -23,7 +23,7 @@ const importData = async () => {
 
     await Doctor.collection.deleteMany({});
     // await Category.collection.deleteMany({});
-    await Product.collection.deleteMany({});
+    //await Product.collection.deleteMany({});
     // await Review.collection.deleteMany({});
     // await User.collection.deleteMany({});
     // await Order.collection.deleteMany({});
@@ -38,7 +38,7 @@ const importData = async () => {
       //   });
       //   return { ...product };
       // });
-      await Product.insertMany(productData);
+      // await Product.insertMany(productData);
       // await User.insertMany(userData);
       // await Order.insertMany(orderData);
 

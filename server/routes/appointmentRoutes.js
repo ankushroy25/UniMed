@@ -7,7 +7,7 @@ const {
   getAppointment,
 } = require("../controllers/appointmentController");
 const { verifyIsLoggedIn } = require("../middleware/verifyAuthToken");
-router.use(verifyIsLoggedIn);
+// router.use(verifyIsLoggedIn);
 router.get("/", getAppointments);
 router.get("/:appointmentId", getAppointment);
 router.post("/", bookAppointment);

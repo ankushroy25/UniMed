@@ -8,7 +8,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700020",
-    profileImage: "/images/doctor-1.jpg",
+    profileImage: "doctor-1.jpg",
   },
   {
     name: "Dr. Sneha Das",
@@ -19,7 +19,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700017",
-    profileImage: "/images/doctor-2.jpg",
+    profileImage: "doctor-2.jpg",
   },
   {
     name: "Dr. Prakash Banerjee",
@@ -30,7 +30,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-3.jpg",
+    profileImage: "doctor-3.jpg",
   },
   {
     name: "Dr. Priya Sharma",
@@ -42,7 +42,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-4.jpg",
+    profileImage: "doctor-4.jpg",
   },
   {
     name: "Dr. Rahul Gupta",
@@ -53,7 +53,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700068",
-    profileImage: "/images/doctor-5.jpg",
+    profileImage: "doctor-5.jpg",
   },
   {
     name: "Dr. Ananya Banerjee",
@@ -64,7 +64,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700071",
-    profileImage: "/images/doctor-6.jpeg",
+    profileImage: "doctor-6.jpeg",
   },
   {
     name: "Dr. Arjun Das",
@@ -75,7 +75,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-7.jpg",
+    profileImage: "doctor-7.jpg",
   },
   {
     name: "Dr. Priyanka Sen",
@@ -86,7 +86,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700025",
-    profileImage: "/images/doctor-8.jpg",
+    profileImage: "doctor-8.jpg",
   },
   {
     name: "Dr. Vikram Sharma",
@@ -97,7 +97,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700034",
-    profileImage: "/images/doctor-9.jpg",
+    profileImage: "doctor-9.jpg",
   },
   {
     name: "Dr. Anshika Goel",
@@ -108,7 +108,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-10.jpg",
+    profileImage: "doctor-10.jpg",
   },
   {
     name: "Dr. Aarav Sen",
@@ -119,7 +119,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-11.jpeg",
+    profileImage: "doctor-11.jpeg",
   },
   {
     name: "Dr. Sneha Banerjee",
@@ -130,7 +130,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700017",
-    profileImage: "/images/doctor-12.jpg",
+    profileImage: "doctor-12.jpg",
   },
   {
     name: "Dr. Vikram Sharma",
@@ -141,7 +141,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700017",
-    profileImage: "/images/doctor-13.jpeg",
+    profileImage: "doctor-13.jpeg",
   },
   {
     name: "Dr. Priya Sen",
@@ -152,7 +152,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-14.jpg",
+    profileImage: "doctor-14.jpg",
   },
   {
     name: "Dr. Arjun Das",
@@ -163,7 +163,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700020",
-    profileImage: "/images/doctor-15.jpg",
+    profileImage: "doctor-15.jpg",
   },
   {
     name: "Dr. Aditi Sharma",
@@ -174,7 +174,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-16.jpg",
+    profileImage: "doctor-16.jpg",
   },
   {
     name: "Dr. Rohan Malhotra",
@@ -185,7 +185,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-17.jpg",
+    profileImage: "doctor-17.jpg",
   },
   {
     name: "Dr. Nandini Patel",
@@ -196,7 +196,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-18.jpg",
+    profileImage: "doctor-18.jpg",
   },
   {
     name: "Dr. Debaleena Bhattacharya",
@@ -207,7 +207,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-19.jpg",
+    profileImage: "doctor-19.jpg",
   },
   {
     name: "Dr. Neha Kapoor",
@@ -218,7 +218,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-20.jpg",
+    profileImage: "doctor-20.jpg",
   },
   {
     name: "Dr. Rakesh Das",
@@ -229,7 +229,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-21.jpg",
+    profileImage: "doctor-21.jpg",
   },
   {
     name: "Dr. Arjun Gupta",
@@ -240,7 +240,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-22.jpg",
+    profileImage: "doctor-22.jpg",
   },
   {
     name: "Dr. Arpita Singh",
@@ -251,7 +251,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-23.jpg",
+    profileImage: "doctor-23.jpg",
   },
   {
     name: "Dr. Siddharth Sharma",
@@ -262,7 +262,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-24.jpg",
+    profileImage: "doctor-24.jpg",
   },
   {
     name: "Dr. Sohom Saha",
@@ -273,7 +273,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-25.jpg",
+    profileImage: "doctor-25.jpg",
   },
   {
     name: "Dr. Niharika Patel",
@@ -284,7 +284,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-26.jpg",
+    profileImage: "doctor-26.jpg",
   },
   {
     name: "Dr. Ritesh Malhotra",
@@ -295,7 +295,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-27.jpg",
+    profileImage: "doctor-27.jpg",
   },
   {
     name: "Dr. Aarav Gupta",
@@ -306,7 +306,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-28.jpg",
+    profileImage: "doctor-28.jpg",
   },
   {
     name: "Dr. Anjali Sharma",
@@ -317,7 +317,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700029",
-    profileImage: "/images/doctor-29.jpg",
+    profileImage: "doctor-29.jpg",
   },
   {
     name: "Dr. Siddharth Patel",
@@ -328,7 +328,7 @@ const doctors = [
     chamberCity: "Kolkata",
     chamberState: "West Bengal",
     chamberZipcode: "700016",
-    profileImage: "/images/doctor-30.jpg",
+    profileImage: "doctor-30.jpg",
   },
 ];
 
@@ -344,9 +344,9 @@ const generateDoctorSchedule = () => {
   ];
   const schedule = [];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const date = new Date();
-    date.setDate(date.getDate() + i);
+    date.setDate(date.getDate() + i + 7);
     const timeSlots = [];
 
     for (let j = 0; j <= 5; j++) {
@@ -364,10 +364,8 @@ const generateDoctorSchedule = () => {
   return schedule;
 };
 
-// Generate the doctor's schedule
-const doctorSchedule = generateDoctorSchedule();
-for (let doctor in doctors) {
-  doctor["Schedule"] = generateDoctorSchedule();
+for (let doctor of doctors) {
+  doctor["schedule"] = generateDoctorSchedule();
 }
 
 module.exports = doctors;

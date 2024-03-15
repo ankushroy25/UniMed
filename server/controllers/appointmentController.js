@@ -1,10 +1,12 @@
 const Appointment = require("../models/AppointmentModel.js");
 const Doctor = require("../models/DoctorModel.js");
-
+const { ObjectId } = require("mongoose").Types;
 exports.bookAppointment = async (req, res) => {
   try {
     const { doctorId, date, time } = req.body;
-    const { _id: userId } = req.user;
+
+    const { _id: userId } = new ObjectId("64254517656b8f8af0a15fdc");
+    // const { _id: userId } = req.user;
     const doctor = await Doctor.findById(doctorId);
 
     if (!doctor) {
