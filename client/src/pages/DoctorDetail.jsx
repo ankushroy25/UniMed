@@ -95,15 +95,20 @@ const DoctorDetailPage = () => {
           </div>
         </div>
       )}
-      {/* {!loading && (
-        <div className="w-full">
-          {" "}
-          <DoctorReviewCarousel />{" "}
+      {!loading && (
+        <div>
+          <div className="text-2xl font-bold text-center text-gray-700  lg:mt-24 md:mt-20 sm:mt-10 mt-5 mb-2">
+            See for yourself what our patients say about us!
+          </div>
+          <div className="w-full  flex justify-center mt-16">
+            {" "}
+            <DoctorReviewCarousel />{" "}
+          </div>
         </div>
-      )} */}
+      )}
       {/* Display schedule */}
       {!loading && (
-        <div className="text-2xl font-bold text-center text-gray-700  lg:mt-24 md:mt-20 sm:mt-10 mt-5">
+        <div className="text-2xl font-bold text-center text-gray-700  lg:mt-24 md:mt-20 sm:mt-10 mt-5 mb-2">
           Don't wait for tomorrow, book your appointment today with the town's
           top-notch doctor!
         </div>
