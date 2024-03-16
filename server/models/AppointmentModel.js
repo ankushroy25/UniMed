@@ -25,12 +25,23 @@ const appointmentSchema = mongoose.Schema(
       enum: ["upcoming", "completed"],
       required: true,
     },
-
+    patientName: {
+      type: String,
+      required: true,
+    },
+    patientAge: {
+      type: Number,
+      required: true,
+    },
     prescription: {
       type: String,
       required: function () {
         return this.type === "completed";
       },
+    },
+    patientPhone: {
+      type: String,
+      required: true,
     },
   },
   {

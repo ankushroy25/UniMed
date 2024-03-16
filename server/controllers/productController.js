@@ -40,7 +40,7 @@ const getProducts = async (req, res, next) => {
 
     const products = await Product.aggregate(pipeline);
 
-    // Calculate total count of documents after applying the pipeline
+    
     const totalProductsCount = await Product.aggregate([
       ...pipeline,
       { $count: "total" },

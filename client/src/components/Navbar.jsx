@@ -98,6 +98,11 @@ function Navbar() {
                   <Typography textAlign="center">About</Typography>
                 </MenuItem>
               </Link>
+              <Link to="/doctors">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Book Appointments</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
           <Box
