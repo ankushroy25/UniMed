@@ -11,7 +11,7 @@ const {
 } = require("../controllers/orderController");
 
 // user routes
-router.use(verifyIsLoggedIn);
+//router.use(verifyIsLoggedIn);
 router.get("/", getUserOrders);
 router.get("/user/:id", getOrder);
 router.post("/", createOrder);

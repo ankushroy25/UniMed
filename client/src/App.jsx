@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import Products from "./pages/Products.jsx";
+import MyOrders from "./pages/MyOrders.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -46,6 +47,7 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-confirm" element={<OrderConfirm />} />
               <Route path="/my-appointments" element={<MyAppointments />} />
+              <Route path="/my-orders" element={<MyOrders />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/hospitals" element={<HospitalInfo />} />
               <Route path="/emergency" element={<Emergency />} />

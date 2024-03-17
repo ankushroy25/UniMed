@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useSelector, useDispatch } from "react-redux";
 import { RiAccountCircleFill, RiShoppingCart2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -19,9 +20,8 @@ import { ShopContext } from "../context/ShopContext.jsx";
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const totalCartItems = useSelector((state) => state.cart.totalItems);
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const { totalCartItems } = useContext(ShopContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -125,9 +125,17 @@ function Navbar() {
                 About
               </Button>
             </Link>
+            <Link to="/doctors">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ m: 2, color: "white", display: "block" }}
+              >
+                Book Appointments
+              </Button>
+            </Link>
           </Box>
           <Link to="/cart">
-            ({totalCartItems()})
+            ({totalCartItems})
             <IconButton className="">
               <span className="mr-2">
                 <RiShoppingCart2Line size={40} color="white" />

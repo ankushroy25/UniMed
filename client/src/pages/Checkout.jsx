@@ -1,28 +1,94 @@
-import React, { useContext, useState } from "react";
-import PRODUCTS from "../data.js";
-import { ShopContext } from "../context/ShopContext.jsx";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import OrderConfirm from "../components/OrderConfirm.jsx";
 import { useNavigate } from "react-router-dom";
-
+import Spinner from "../components/Spinner.jsx";
+import { emptyCart } from "../redux/cartSlice.js";
 const Checkout = () => {
-  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const totalItems = useSelector((state) => state.cart.totalItems);
+  const shippingAmount = (20 * totalAmount) / 100;
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const [shippingAddress, setShippingAddress] = useState({
+    address: "",
+    state: "",
+    city: "",
+    zip: "",
+  });
   const [showAlert, setShowAlert] = useState(false);
   const navigate = useNavigate();
-  const totalAmount = getTotalCartAmount();
-  const shippingAmount = 10;
 
-  const handlePlaceOrderClick = () => {
-    const orderPlacedSuccessfully = true;
+  const fetchProducts = async () => {
+    try {
+      const productIds = Object.keys(cartItems);
 
-    if (orderPlacedSuccessfully) {
-      setShowAlert(true);
-      navigate("/order-confirm");
+      const productData = await Promise.all(
+        productIds.map(async (productId) => {
+          const response = await axios.get(`/api/products/${productId}`);
+          return response.data;
+        })
+      );
+
+      setProducts(productData);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
     }
-    window.location.reload();
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [cartItems]);
+
+  const handlePlaceOrderClick = async (e) => {
+    e.preventDefault();
+    try {
+      const cartItems1 = products.map((product) => ({
+        name: product.name,
+        price: product.price,
+        image: { path: product.images[0].path },
+        quantity: cartItems[product._id],
+      }));
+
+      const orderData = {
+        cartItems: cartItems1,
+        orderTotal: {
+          itemsCount: totalItems,
+          cartSubtotal: totalAmount,
+        },
+        shippingAddress,
+      };
+      console.log(orderData);
+
+      const response = await axios.post("/api/orders", orderData);
+      toast.info("Order is being processed, please wait...", {
+        autoClose: 3000,
+      });
+      if (response.status === 201) {
+        setShowAlert(true);
+        dispatch(emptyCart());
+        navigate("/order-confirm");
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+    }
+  };
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Spinner />
+      </div>
+    );
+  }
   return (
     <div>
-      <div className="flex flex-col items-center border-b bg-white bg-opacity-30 py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+      <div className="flex flex-col items-center border-b bg-white bg-opacity-30 py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
         <a href="#" className="text-2xl font-bold text-gray-800">
           Order Checkout
         </a>
@@ -105,62 +171,99 @@ const Checkout = () => {
         <div className="px-4 pt-8">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-800">
-            Check your items. And select a suitable shipping method.
+            Check your items and fill the shipping address and payment details.
           </p>
           <div className="mt-4 space-y-3 rounded-lg border bg-white px-2 sm:px-6">
-            <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-              <div>
-                {PRODUCTS.map((product, index) => {
-                  if (cartItems[product.id] !== 0) {
-                    return (
-                      <div
-                        key={index}
-                        className="flex flex-row border-b-2 py-4"
-                      >
-                        <div className="rounded-md mb-4 md:mr-6 md:mb-0 bg-white p-2">
-                          <img src={product.img} alt={product.title} />
-                        </div>
-                        <div className="">
-                          <p className="text-xl font-bold text-gray-700">
-                            {product.title}
-                          </p>
-                          <div className="mt-2 flex space-x-2">
-                            <div className="flex flex-col items-center rounded-xl  p-4">
-                              <p className="text-sm font-medium text-gray-500">
-                                Price
-                              </p>
-                              <p className="text-2xl font-medium text-gray-600">
-                                ${product.newPrice}
-                              </p>
-                            </div>
-                            <div className="flex flex-col items-center rounded-xl  p-4">
-                              <p className="text-sm font-medium text-gray-500">
-                                Color
-                              </p>
-                              <p className="text-2xl font-medium text-gray-600">
-                                {product.color}
-                              </p>
-                            </div>
-                            <div className="flex flex-col items-center rounded-xl  p-4">
-                              <p className="text-sm font-medium text-gray-500">
-                                Company
-                              </p>
-                              <p className="text-2xl font-medium text-gray-600">
-                                {product.company}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-                })}
-              </div>
+            <div>
+              {products.map((product) => (
+                <div
+                  key={product._id}
+                  className="border-b border-gray-200 last:border-0 flex items-center justify-between p-4"
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={`/api/images/${product.images[0].path}`}
+                      alt={product.name}
+                      className="w-20 h-20 rounded-md object-cover mr-4"
+                    />
+                    <div>
+                      <p className="text-lg font-semibold">{product.name}</p>
+                      <p className="text-gray-500">
+                        Price: &#8377; {product.price}
+                      </p>
+                      <p className="text-gray-500">
+                        Quantity: {cartItems[product._id]}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-xl font-semibold ">
+                    &#8377; {product.price * cartItems[product._id]}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
+          {/* Shipping Address Form */}
+          <form className="mt-8 bg-gray-50 shadow-md rounded-md px-8 pt-6 pb-8 mb-4">
+            <p className="text-xl font-medium mb-4">Shipping Address</p>
+            <div className="mt-4 space-y-4">
+              <input
+                type="text"
+                id="address"
+                placeholder="Street Address"
+                className="block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                value={shippingAddress.address}
+                onChange={(e) =>
+                  setShippingAddress({
+                    ...shippingAddress,
+                    address: e.target.value,
+                  })
+                }
+              />
+              <input
+                type="text"
+                id="city"
+                placeholder="City/Town"
+                className="block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                value={shippingAddress.city}
+                onChange={(e) =>
+                  setShippingAddress({
+                    ...shippingAddress,
+                    city: e.target.value,
+                  })
+                }
+              />
+
+              <input
+                type="text"
+                placeholder="State"
+                className="block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                value={shippingAddress.state}
+                onChange={(e) =>
+                  setShippingAddress({
+                    ...shippingAddress,
+                    state: e.target.value,
+                  })
+                }
+              />
+              <input
+                type="text"
+                placeholder="ZIP"
+                className="block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                value={shippingAddress.zip}
+                onChange={(e) =>
+                  setShippingAddress({
+                    ...shippingAddress,
+                    zip: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </form>
         </div>
-        <div className="my-16 bg-gray-50 px-4 py-8 lg:mt-0">
-          <form action="submit" method="get">
+        <div className="my-24 rounded-md bg-gray-50 px-4 py-8">
+          <form>
             <p className="text-xl font-medium">Payment Details</p>
             <p className="text-gray-400">
               Complete your order by providing your payment details.
@@ -313,24 +416,25 @@ const Checkout = () => {
               <div className="mt-6 border-t border-b py-2">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                  <p className="font-semibold text-gray-900">${totalAmount}</p>
+                  <p className="font-semibold text-gray-900">
+                    &#8377;{totalAmount}
+                  </p>
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Shipping</p>
                   <p className="font-semibold text-gray-900">
-                    ${shippingAmount}
+                    &#8377;{shippingAmount}
                   </p>
                 </div>
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Total</p>
                 <p className="text-2xl font-semibold text-gray-900">
-                  ${totalAmount + shippingAmount}
+                  &#8377; {totalAmount + shippingAmount}
                 </p>
               </div>
             </div>
             <button
-              type="submit"
               onClick={handlePlaceOrderClick}
               className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
             >

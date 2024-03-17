@@ -1,22 +1,25 @@
 import React from "react";
-import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const OrderConfirm = () => {
   return (
-    <div className="flex flex-col  h-screen p-16">
-      <div>
-        <Alert severity="success">
-          Your order has been placed successfully!
-        </Alert>
+    <div className="flex flex-col w-[40%] items-center mx-auto min-h-screen">
+      <div
+        className="bg-green-100 border border-green-400 text-green-700 mt-10 mb-5 px-4 py-3 rounded relative"
+        role="alert"
+      >
+        <strong className="font-bold">Success!</strong>
+        <span className="block sm:inline">
+          {" "}
+          Your order has been placed successfully.
+        </span>
       </div>
 
-      <Link to="/products">
-        <div>
-          <button className="mt-8  rounded-md bg-slate-800 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
-            Back to store
-          </button>
-        </div>
+      <Link to="/my-orders">
+        <Button variant="contained" color="primary" className="mt-8">
+          View My Orders
+        </Button>
       </Link>
     </div>
   );

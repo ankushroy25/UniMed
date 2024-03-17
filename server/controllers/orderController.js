@@ -1,10 +1,11 @@
 const Order = require("../models/OrderModel");
-const Product = require("../models/ProductModel");
-const ObjectId = require("mongodb").ObjectId;
 
+const { ObjectId } = require("mongoose").Types;
 const getUserOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({ user: ObjectId(req.user._id) });
+    const orders = await Order.find({
+      user: new ObjectId("64254517656b8f8af0a15fdc"),
+    }).sort({ createdAt: -1 });
     res.send(orders);
   } catch (error) {
     next(error);
@@ -14,7 +15,7 @@ const getUserOrders = async (req, res, next) => {
 const getOrder = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
-      .populate("user", "-password -isAdmin -_id -__v -createdAt -updatedAt")
+      .populate("user", "-password --_id -__v -createdAt -updatedAt")
       .orFail();
     res.send(order);
   } catch (err) {
@@ -24,23 +25,16 @@ const getOrder = async (req, res, next) => {
 
 const createOrder = async (req, res, next) => {
   try {
-    const { cartItems, orderTotal, paymentMethod } = req.body;
-    if (!cartItems || !orderTotal || !paymentMethod) {
+    const { cartItems, orderTotal, shippingAddress } = req.body;
+    if (!cartItems || !orderTotal || !shippingAddress) {
       return res.status(400).send("All inputs are required");
     }
 
-    let ids = cartItems.map((item) => {
-      return item.productID;
-    });
-    let qty = cartItems.map((item) => {
-      return Number(item.quantity);
-    });
-
     const order = new Order({
-      user: ObjectId(req.user._id),
+      user: new ObjectId("64254517656b8f8af0a15fdc"),
       orderTotal: orderTotal,
+      shippingAddress: shippingAddress,
       cartItems: cartItems,
-      paymentMethod: paymentMethod,
     });
     const createdOrder = await order.save();
     res.status(201).send(createdOrder);
@@ -51,9 +45,8 @@ const createOrder = async (req, res, next) => {
 
 const getOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({})
-      .populate("user", "-password")
-      .sort({ paymentMethod: "desc" });
+    const orders = await Order.find({}).populate("user", "-password");
+
     res.send(orders);
   } catch (err) {
     next(err);

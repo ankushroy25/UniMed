@@ -95,19 +95,27 @@ const ProductDetailPage = () => {
               <AiFillStar key={index} color="orange" className="h-6 w-6" />
             ))}
           </div>
-          <div className="mb-4">
-            <label htmlFor="quantity" className="mr-2">
-              Quantity:
-            </label>
+          <div className="flex items-center mt-2 mb-6">
+            <button
+              className=" focus:outline-none mr-2 "
+              onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}
+            >
+              <p className="text-2xl"> -</p>
+            </button>
             <input
               type="number"
               id="quantity"
               name="quantity"
-              min="1"
+              min="0"
               value={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value))}
-              className="border border-gray-400 rounded-md px-2 py-1"
+              className="border border-gray-300 rounded-md px-2 py-1 text-sm w-16 mr-2 text-center focus:outline-none"
             />
+            <button
+              className=" focus:outline-none mr-4"
+              onClick={() => setQuantity((prev) => Math.min(prev + 1, 10))}
+            >
+              <p className="text-2xl"> +</p>
+            </button>
           </div>
           <button
             className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none ${
