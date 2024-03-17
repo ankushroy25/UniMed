@@ -2,7 +2,50 @@ import { Link } from "react-router-dom";
 import cover from "../assets/cover.jpg";
 import Banner from "../components/Banner";
 import Services from "../components/Services";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+
 const Homepage = () => {
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    const migrateUser = async () => {
+      if (user) {
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/users/register",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name: user.given_name,
+                lastName: user.family_name,
+                email: user.email,
+                password: user.sub,
+                phoneNumber: "983274312",
+              }),
+            }
+          );
+
+          if (!response.ok) {
+            const status = await response;
+            console.error(status);
+            return;
+          }
+
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+          console.error("Error updating user:", error);
+        }
+      }
+    };
+
+    migrateUser();
+  }, [user]);
+
   return (
     <>
       <div className="bg-gradient-to-b">

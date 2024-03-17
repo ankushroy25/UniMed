@@ -12,12 +12,14 @@ import Nutrition from "./pages/Nutrition.jsx";
 import MentalHealth from "./pages/MentalHealth.jsx";
 import Cart from "./pages/Cart.jsx";
 import "./App.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ShopContextProvider } from "./context/ShopContext.jsx";
 import OrderConfirm from "./components/OrderConfirm.jsx";
 import About from "./pages/About.jsx";
 import Profile from "./pages/Profile.jsx";
+import EmergencyRide from "./pages/EmergencyRide.jsx";
 
 function App() {
   return (
@@ -42,6 +44,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/hospitals" element={<HospitalInfo />} />
               <Route path="/emergency" element={<Emergency />} />
+              <Route path="/emergency/ride" element={<EmergencyRide />} />
               <Route path="/nutrition" element={<Nutrition />} />
               <Route path="/mental-health" element={<MentalHealth />} />
               <Route path="/appointments" element={<Appointments />} />
