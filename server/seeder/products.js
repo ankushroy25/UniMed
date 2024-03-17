@@ -7,9 +7,9 @@ const products = [
     price: 50.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-1.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-1.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -20,9 +20,9 @@ const products = [
     price: 45.0,
     rating: 4.1,
     images: [
-      { path: "/images/medicine-2.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-2.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -33,9 +33,9 @@ const products = [
     price: 15.0,
     rating: 4.2,
     images: [
-      { path: "/images/medicine-3.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-3.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -46,9 +46,9 @@ const products = [
     price: 20.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-4.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-4.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -59,9 +59,9 @@ const products = [
     price: 25.0,
     rating: 4.8,
     images: [
-      { path: "/images/medicine-5.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-5.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -72,9 +72,9 @@ const products = [
     price: 10.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-6.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-6.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -85,9 +85,9 @@ const products = [
     price: 25.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-7.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-47.jpg" },
+      { path: "medicine-7.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-47.jpg" },
     ],
   },
   {
@@ -98,9 +98,9 @@ const products = [
     price: 30.0,
     rating: 4.7,
     images: [
-      { path: "/images/medicine-8.jpg" },
-      { path: "/images/medicine-45.jpg" },
-      { path: "/images/medicine-46.jpg" },
+      { path: "medicine-8.jpg" },
+      { path: "medicine-45.jpg" },
+      { path: "medicine-46.jpg" },
     ],
   },
   {
@@ -111,9 +111,9 @@ const products = [
     price: 35.0,
     rating: 4.2,
     images: [
-      { path: "/images/medicine-9.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-47.jpg" },
+      { path: "medicine-9.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-47.jpg" },
     ],
   },
   {
@@ -124,9 +124,9 @@ const products = [
     price: 40.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-10.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-10.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -137,9 +137,9 @@ const products = [
     price: 25.0,
     rating: 4.0,
     images: [
-      { path: "/images/medicine-11.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-11.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -150,9 +150,9 @@ const products = [
     price: 30.0,
     rating: 4.2,
     images: [
-      { path: "/images/medicine-12.jpeg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-12.jpeg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -163,9 +163,9 @@ const products = [
     price: 25.0,
     rating: 4.0,
     images: [
-      { path: "/images/medicine-13.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-13.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -176,9 +176,9 @@ const products = [
     price: 18.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-14.jpg" },
-      { path: "/images/medicine-45.jpg" },
-      { path: "/images/medicine-46.jpg" },
+      { path: "medicine-14.jpg" },
+      { path: "medicine-45.jpg" },
+      { path: "medicine-46.jpg" },
     ],
   },
   {
@@ -189,9 +189,9 @@ const products = [
     price: 15.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-15.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-15.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -202,9 +202,9 @@ const products = [
     price: 18.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-16.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-47.jpg" },
+      { path: "medicine-16.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-47.jpg" },
     ],
   },
   {
@@ -215,9 +215,9 @@ const products = [
     price: 40.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-17.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-17.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -228,9 +228,9 @@ const products = [
     price: 35.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-18.jpg" },
-      { path: "/images/medicine-45.jpg" },
-      { path: "/images/medicine-46.jpg" },
+      { path: "medicine-18.jpg" },
+      { path: "medicine-45.jpg" },
+      { path: "medicine-46.jpg" },
     ],
   },
   {
@@ -241,9 +241,9 @@ const products = [
     price: 45.0,
     rating: 4.7,
     images: [
-      { path: "/images/medicine-19.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-19.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -254,9 +254,9 @@ const products = [
     price: 50.0,
     rating: 4.8,
     images: [
-      { path: "/images/medicine-20.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-20.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -267,9 +267,9 @@ const products = [
     price: 27.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-21.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-21.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -280,9 +280,9 @@ const products = [
     price: 22.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-22.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-22.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -293,9 +293,9 @@ const products = [
     price: 15.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-23.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-23.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -306,9 +306,9 @@ const products = [
     price: 12.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-24.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-24.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -319,9 +319,9 @@ const products = [
     price: 20.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-25.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-25.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -332,9 +332,9 @@ const products = [
     price: 22.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-26.jpeg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-26.jpeg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -345,9 +345,9 @@ const products = [
     price: 18.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-27.jpeg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-45.jpg" },
+      { path: "medicine-27.jpeg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-45.jpg" },
     ],
   },
   {
@@ -358,9 +358,9 @@ const products = [
     price: 25.0,
     rating: 4.7,
     images: [
-      { path: "/images/medicine-28.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-45.jpg" },
+      { path: "medicine-28.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-45.jpg" },
     ],
   },
   {
@@ -371,9 +371,9 @@ const products = [
     price: 15.0,
     rating: 4.2,
     images: [
-      { path: "/images/medicine-29.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-29.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -384,9 +384,9 @@ const products = [
     price: 12.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-30.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-30.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -397,9 +397,9 @@ const products = [
     price: 30.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-31.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-31.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -410,9 +410,9 @@ const products = [
     price: 35.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-32.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-32.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -423,9 +423,9 @@ const products = [
     price: 60.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-33.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-33.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -436,9 +436,9 @@ const products = [
     price: 70.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-34.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-47.jpg" },
+      { path: "medicine-34.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-47.jpg" },
     ],
   },
   {
@@ -449,9 +449,9 @@ const products = [
     price: 25.0,
     rating: 4.2,
     images: [
-      { path: "/images/medicine-35.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-35.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -462,9 +462,9 @@ const products = [
     price: 30.0,
     rating: 4.5,
     images: [
-      { path: "/images/medicine-36.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-36.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -475,9 +475,9 @@ const products = [
     price: 20.0,
     rating: 4.3,
     images: [
-      { path: "/images/medicine-37.jpg" },
-      { path: "/images/medicine-45.jpg" },
-      { path: "/images/medicine-46.jpg" },
+      { path: "medicine-37.jpg" },
+      { path: "medicine-45.jpg" },
+      { path: "medicine-46.jpg" },
     ],
   },
   {
@@ -488,9 +488,9 @@ const products = [
     price: 18.0,
     rating: 4.4,
     images: [
-      { path: "/images/medicine-38.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-38.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -501,9 +501,9 @@ const products = [
     price: 10.0,
     rating: 4.6,
     images: [
-      { path: "/images/medicine-39.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-45.jpg" },
+      { path: "medicine-39.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-45.jpg" },
     ],
   },
   {
@@ -514,9 +514,9 @@ const products = [
     price: 15.0,
     rating: 4.7,
     images: [
-      { path: "/images/medicine-40.jpg" },
-      { path: "/images/medicine-43.jpg" },
-      { path: "/images/medicine-44.jpg" },
+      { path: "medicine-40.jpg" },
+      { path: "medicine-43.jpg" },
+      { path: "medicine-44.jpg" },
     ],
   },
   {
@@ -526,9 +526,9 @@ const products = [
     price: 50.0,
     rating: 4.8,
     images: [
-      { path: "/images/medicine-41.jpg" },
-      { path: "/images/medicine-45.jpg" },
-      { path: "/images/medicine-46.jpg" },
+      { path: "medicine-41.jpg" },
+      { path: "medicine-45.jpg" },
+      { path: "medicine-46.jpg" },
     ],
   },
   {
@@ -539,9 +539,9 @@ const products = [
     price: 60.0,
     rating: 4.9,
     images: [
-      { path: "/images/medicine-42.jpg" },
-      { path: "/images/medicine-46.jpg" },
-      { path: "/images/medicine-45.jpg" },
+      { path: "medicine-42.jpg" },
+      { path: "medicine-46.jpg" },
+      { path: "medicine-45.jpg" },
     ],
   },
 ];

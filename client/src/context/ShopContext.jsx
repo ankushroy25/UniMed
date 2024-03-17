@@ -1,30 +1,55 @@
-import React, { useState } from "react";
-import { createContext } from "react";
-import PRODUCTS from "../data.js";
+import React, { useState, useEffect, createContext } from "react";
+import axios from "axios";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-  let cart = {};
-  for (let i = 1; i < PRODUCTS.length + 1; i++) {
-    cart[i] = 0;
-  }
-  return cart;
-};
-
 export const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState({});
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/api/products");
+        if (response.status === 200) {
+          setProducts(response.data);
+          setCartItems(getDefaultCart(response.data));
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const getDefaultCart = (products) => {
+    let cart = {};
+    for (const product of products) {
+      cart[product._id] = 0; // Assuming _id is the MongoDB ID
+    }
+    return cart;
   };
 
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const addToCart = (itemId, quantity = 1) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId] + quantity,
+    }));
+  };
+
+  const removeFromCart = (itemId, quantity = 1) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: Math.max(0, prev[itemId] - quantity),
+    }));
   };
 
   const removeItemFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: 0 }));
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: 0,
+    }));
   };
 
   const totalCartItems = () => {
@@ -32,7 +57,6 @@ export const ShopContextProvider = (props) => {
     for (const item in cartItems) {
       totalCount += cartItems[item];
     }
-
     return totalCount;
   };
 
@@ -40,14 +64,15 @@ export const ShopContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.newPrice;
+        let product = products.find((product) => product._id === item);
+        totalAmount += cartItems[item] * product.price; // Assuming price is the product price field
       }
     }
     return totalAmount;
   };
 
   const contextValue = {
+    products,
     cartItems,
     addToCart,
     removeFromCart,

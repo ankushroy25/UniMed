@@ -21,16 +21,16 @@ const importData = async () => {
     // await Category.collection.dropIndexes();
     // await Product.collection.dropIndexes();
 
-    await Doctor.collection.deleteMany({});
+    //await Doctor.collection.deleteMany({});
     // await Category.collection.deleteMany({});
-    //await Product.collection.deleteMany({});
+    await Product.collection.deleteMany({});
     // await Review.collection.deleteMany({});
     // await User.collection.deleteMany({});
     // await Order.collection.deleteMany({});
 
     if (process.argv[2] !== "-d") {
       // await Category.insertMany(categoryData);
-      await Doctor.insertMany(doctorsData);
+      //await Doctor.insertMany(doctorsData);
       // const reviews = await Review.insertMany(reviewData);
       // const sampleProducts = productData.map((product) => {
       //   reviews.map((review) => {
@@ -38,7 +38,7 @@ const importData = async () => {
       //   });
       //   return { ...product };
       // });
-      // await Product.insertMany(productData);
+      await Product.insertMany(productData);
       // await User.insertMany(userData);
       // await Order.insertMany(orderData);
 

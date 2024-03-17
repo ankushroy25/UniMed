@@ -5,7 +5,7 @@ const getProducts = async (req, res, next) => {
     const category = req.query.category;
     const searchQuery = req.query.searchQuery;
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const limit = parseInt(req.query.limit) || 12;
     const pipeline = [];
     let totalPages = 0;
     if (searchQuery) {
@@ -30,17 +30,16 @@ const getProducts = async (req, res, next) => {
     if (!searchQuery && !category) {
       totalPages = Math.ceil((await Product.countDocuments()) / limit);
       const allProducts = await Product.find({})
-        .select("name price image")
+        .select("name price images _id")
         .skip((page - 1) * limit)
         .limit(limit);
       return res.status(200).json({ products: allProducts, totalPages });
     }
     pipeline.push({ $skip: (page - 1) * limit });
     pipeline.push({ $limit: limit });
-
+    pipeline.push({ $project: { name: 1, price: 1, images: 1 } });
     const products = await Product.aggregate(pipeline);
 
-    
     const totalProductsCount = await Product.aggregate([
       ...pipeline,
       { $count: "total" },
@@ -52,59 +51,61 @@ const getProducts = async (req, res, next) => {
   }
 };
 
-const autocomplete = async (req, res, next) => {
-  try {
-    const searchQuery = req.query.searchQuery;
-    if (searchQuery) {
-      const nameResults = await Product.aggregate([
-        {
-          $search: {
-            index: "autocompleteProducts",
-            autocomplete: {
-              query: searchQuery,
-              path: "name",
-              tokenOrder: "sequential",
-            },
-          },
-        },
-        {
-          $project: {
-            _id: 0,
-            name: 1,
-          },
-        },
-      ]);
+// const autocomplete = async (req, res, next) => {
+//   try {
+//     const searchQuery = req.query.searchQuery;
+//     if (searchQuery) {
+//       const nameResults = await Product.aggregate([
+//         {
+//           $search: {
+//             index: "autocompleteProducts",
+//             autocomplete: {
+//               query: searchQuery,
+//               path: "name",
+//               tokenOrder: "sequential",
+//             },
+//           },
+//         },
+//         {
+//           $project: {
+//             _id: 0,
+//             name: 1,
+//           },
+//         },
+//       ]);
 
-      const descriptionResults = await Product.aggregate([
-        {
-          $search: {
-            index: "autocompleteProducts",
-            autocomplete: {
-              query: searchQuery,
-              path: "description",
-              tokenOrder: "sequential",
-            },
-          },
-        },
-        {
-          $project: {
-            _id: 0,
-            name: 1,
-          },
-        },
-      ]);
+//       const descriptionResults = await Product.aggregate([
+//         {
+//           $search: {
+//             index: "autocompleteProducts",
+//             autocomplete: {
+//               query: searchQuery,
+//               path: "description",
+//               tokenOrder: "sequential",
+//             },
+//           },
+//         },
+//         {
+//           $project: {
+//             _id: 0,
+//             name: 1,
+//           },
+//         },
+//       ]);
 
-      const mergedResults = [...nameResults, ...descriptionResults];
-      res.status(200).json(mergedResults);
-    }
-  } catch (error) {
-    next(error);
-  }
-};
+//       const mergedResults = [...nameResults, ...descriptionResults];
+//       res.status(200).json(mergedResults);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 const getProductById = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).select(
+      "-__v -updatedAt -createdAt"
+    );
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
@@ -116,6 +117,6 @@ const getProductById = async (req, res, next) => {
 
 module.exports = {
   getProducts,
-  autocomplete,
+  //autocomplete,
   getProductById,
 };

@@ -12,6 +12,7 @@ import Nutrition from "./pages/Nutrition.jsx";
 import Doctors from "./pages/Doctors.jsx";
 import MyAppointments from "./pages/MyAppointments.jsx";
 import DoctorDetailPage from "./pages/DoctorDetail.jsx";
+
 import MentalHealth from "./pages/MentalHealth.jsx";
 import Cart from "./pages/Cart.jsx";
 import "./App.css";

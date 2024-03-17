@@ -1,79 +1,125 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice.js";
 import { useParams } from "react-router-dom";
-import data from "../data.js";
-import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
-import { ShopContext } from "../context/ShopContext.jsx";
-import ProductsCarousel from "../components/ProductsCarousel.jsx";
+import axios from "axios";
+import { AiFillStar } from "react-icons/ai";
+import Spinner from "../components/Spinner.jsx";
+import { toast } from "react-toastify";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
-  const { addToCart, cartItems } = useContext(ShopContext);
-  const cartItemAmount = cartItems[id];
-  useEffect(() => {
-    const foundProduct = data.find((item) => item.id === parseInt(id, 10));
+  const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false); // State for tracking if added to cart
 
-    if (foundProduct) {
-      setProduct(foundProduct);
-    } else {
-      console.log("Product not found");
-    }
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({ productId: product._id, price: product.price, quantity })
+    );
+    setAddedToCart(true); // Update state to indicate added to cart
+    toast.success("Added to cart!");
+  };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`/api/products/${id}`);
+        if (response.status === 200) {
+          setProduct(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
   }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-[800px]">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
-    <div className="antialiased  mx-auto min-h-screen bg-gray-300 px-8 pb-10">
-      <div className="relative block md:flex items-center">
-        <div className="my-8 w-full md:w-1/2 relative z-1 bg-gray-100 rounded shadow-lg overflow-hidden">
-          <img
-            src={product.img}
-            alt={product.title}
-            className="w-auto h-auto"
-          />
-        </div>
-
-        <div className="w-full md:w-1/2 relative z-0 px-8 md:px-0 md:py-16">
-          <div className="bg-blue-900 text-white rounded-b md:rounded-b-none md:rounded-r shadow-lg overflow-hidden">
-            <div className="text-2xl font-medium uppercase p-8 text-center border-b border-blue-400 tracking-wide">
-              {product.title}
-            </div>
-            <div className="flex flex-row justify-center text-lg md:text-3xl max-w-sm mx-auto mt-8 text-white px-8 lg:px-0">
-              <p className=" font-semibold mr-2">${product.newPrice}</p>
-              <p className=" text-gray-400 line-through">{product.prevPrice}</p>
-            </div>
-            <div className="mt-8 border border-blue-700 mx-8 lg:mx-16 flex flex-wrap">
-              <div className="flex items-center justify-center w-1/2 text-center p-4 border-r border-b border-blue-700">
-                Color : {product.color}
-              </div>
-              <div className="flex items-center justify-center w-1/2 text-center p-4 border-b border-blue-700">
-                Category : {product.category}
-              </div>
-              <div className="flex items-center justify-center w-1/2 text-center p-4 border-r border-blue-700">
-                Company: {product.company}
-              </div>
-              <div className="flex items-center justify-center w-1/2 text-center p-4">
-                {product.rating} <AiFillStar color="orange" className="mt-1" />
-                <p className="">{product.reviews}</p>
-              </div>
-            </div>
-
-            <a
-              className=" flex flex-col items-center justify-center bg-blue-600 hover:bg-red-500 p-8 text-lg font-semibold text-white uppercase mt-8"
-              href="#"
-              onClick={() => addToCart(product.id)}
-            >
-              Add to cart
-              {cartItemAmount > 0 ? <>({cartItemAmount})</> : ""}
-              <AiOutlineShoppingCart size={20} />
-            </a>
+    <div className="container mx-auto px-4 py-8 min-h-[800px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex justify-start gap-2">
+          {/* Other Images */}
+          <div
+            className="lg:col-span-1 grid grid-cols-1 gap-3 mt-5 w-[33%] p-2 pr-3 items-center"
+            style={{ boxShadow: "8px 0 8px -8px rgba(0, 0, 0, 0.5)" }}
+          >
+            {product.images.slice(1).map((image, index) => (
+              <img
+                key={index}
+                src={`/api/images/${image.path}`}
+                alt={product.name}
+                className="w-[150px] h-auto  object-cover cursor-pointer"
+                onClick={() => {
+                  const updatedImages = [...product.images];
+                  [updatedImages[0], updatedImages[index + 1]] = [
+                    updatedImages[index + 1],
+                    updatedImages[0],
+                  ];
+                  setProduct({ ...product, images: updatedImages });
+                }}
+              />
+            ))}
+          </div>
+          {/* Main Image */}
+          <div className="flex items-center justify-start w-full p-2">
+            <img
+              src={`/api/images/${product.images[0].path}`}
+              alt={product.name}
+              className="w-full h-[400px]  object-contain"
+            />
           </div>
         </div>
-      </div>
 
-      <ProductsCarousel />
+        <div className="lg:col-span-1 bg-gradient-to-r from-blue-200 to-blue-600 rounded-lg shadow-xl p-8">
+          <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
+          <p className="text-lg text-gray-700 mb-4">{product.category}</p>
+          <div className="flex items-center mb-4">
+            <span className="text-xl font-semibold">
+              &#8377; {product.price}
+            </span>
+          </div>
+          <p className="text-lg text-gray-700 mb-8">{product.description}</p>
+          <div className="mb-4 flex items-center">
+            {[...Array(Math.round(product.rating))].map((_, index) => (
+              <AiFillStar key={index} color="orange" className="h-6 w-6" />
+            ))}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="quantity" className="mr-2">
+              Quantity:
+            </label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value={quantity}
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+              className="border border-gray-400 rounded-md px-2 py-1"
+            />
+          </div>
+          <button
+            className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none ${
+              addedToCart ? "cursor-not-allowed" : ""
+            }`}
+            onClick={handleAddToCart}
+            disabled={addedToCart}
+          >
+            {addedToCart ? "Added to Cart" : "Add to Cart"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

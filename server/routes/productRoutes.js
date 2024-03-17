@@ -3,11 +3,11 @@ const router = express.Router();
 const {
   getProducts,
   getProductById,
-  autocomplete,
+  //autocomplete,
 } = require("../controllers/productController");
 
 router.get("/", getProducts);
-router.get("/autocomplete", autocomplete);
-router.get("/get-one/:id", getProductById);
+//router.get("/autocomplete", autocomplete);
+router.get("/:id", getProductById);
 
 module.exports = router;

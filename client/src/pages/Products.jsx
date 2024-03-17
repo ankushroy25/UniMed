@@ -1,168 +1,168 @@
-import React, { useContext, useState } from "react";
-import data from "../data.js";
+import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import TablePagination from "@mui/material/TablePagination";
-import { AiFillStar } from "react-icons/ai";
-import ProductFilters from "../components/ProductFilters.jsx"; // Import the filter component
 import { Link } from "react-router-dom";
-import { ShopContext } from "../context/ShopContext.jsx";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+
+import axios from "axios";
+import Spinner from "../components/Spinner";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const Products = () => {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(20);
+  const [products, setProducts] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedColor, setSelectedColor] = useState("All");
-  const [selectedRating, setSelectedRating] = useState("All");
-  const [sortingOrder, setSortingOrder] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const { addToCart } = useContext(ShopContext);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [loading, setLoading] = useState(true);
+  const categories = [
+    "Antibiotics",
+    "Analgesics",
+    "Antipyretics",
+    "Antiseptics",
+    "Antivirals",
+    "Antifungals",
+    "Antacids",
+    "Anti-inflammatory drugs",
+    "Anticoagulants",
+    "Antidepressants",
+    "Anticonvulsants",
+    "Antihistamines",
+    "Antihypertensive drugs",
+    "Bronchodilators",
+    "Diuretics",
+    "Hormonal drugs",
+    "Immunosuppressants",
+    "Muscle relaxants",
+    "Sedatives",
+    "Stimulants",
+    "Vaccines",
+  ];
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  const fetchProducts = async () => {
+    try {
+      let url = "/api/products?page=" + currentPage;
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+      if (searchQuery && searchQuery.length > 3) {
+        const searchQuery1 = encodeURIComponent(searchQuery);
+        url += "&searchQuery=" + searchQuery1;
+      }
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-    setPage(0);
-  };
+      if (selectedCategory) {
+        url += "&category=" + selectedCategory;
+      }
 
-  const handleColorChange = (event) => {
-    setSelectedColor(event.target.value);
-    setPage(0);
-  };
+      const response = await axios.get(url);
+      if (response.status === 200) {
+        const { products, totalPages } = response.data;
 
-  const handleRatingChange = (event) => {
-    setSelectedRating(event.target.value);
-    setPage(0);
-  };
-
-  const handleSortingChange = (event) => {
-    setSortingOrder(event.target.value);
-    setPage(0);
-  };
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-    setPage(0);
-  };
-
-  const colorOptions = [...new Set(data.map((item) => item.color))];
-  const ratingOptions = [...new Set(data.map((item) => item.rating))];
-  const categoryOptions = [...new Set(data.map((item) => item.category))];
-
-  // Function to sort the data based on price
-  const sortDataByPrice = (a, b) => {
-    if (sortingOrder === "lowToHigh") {
-      return a.newPrice - b.newPrice;
-    } else {
-      return b.newPrice - a.newPrice;
+        setProducts(products);
+        setTotalPages(totalPages);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Filter and sort the data
-  let filteredData = data.filter(
-    (item) =>
-      (item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.company.toLowerCase().includes(searchQuery.toLowerCase())) &&
-      (selectedColor === "All" ||
-        item.color.toLowerCase() === selectedColor.toLowerCase()) &&
-      (selectedRating === "All" || item.rating === parseInt(selectedRating)) &&
-      (selectedCategory === "All" || item.category === selectedCategory)
-  );
+  useEffect(() => {
+    fetchProducts();
+  }, [currentPage, searchQuery, selectedCategory]);
 
-  // Apply sorting
-  filteredData = filteredData.sort(sortDataByPrice);
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
+  };
 
-  const slicedData = filteredData.slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
-  );
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
+  };
 
   return (
-    <div className="py-8 px-16">
-      <div className="py-4 mb-4 mx-auto lg:flex lg:flex-row justify-center shadow-gray-400 shadow-md bg-slate-600  rounded-md">
-        <p className="text-white flex justify-center mt-3 mr-4 font-semibold text-2xl">
-          Filter
-        </p>
+    <div className="py-8 px-16 min-h-[700px] flex flex-col justify-between">
+      <div>
+        <div className="py-4 mb-4 mx-auto lg:flex lg:flex-row justify-center shadow-gray-400 shadow-md bg-slate-600 rounded-md">
+          <div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search Products"
+              className="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4"
+            />
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">All Categories</option>
 
-        {/* Use the ProductFilters component */}
-        <ProductFilters
-          searchQuery={searchQuery}
-          selectedColor={selectedColor}
-          selectedRating={selectedRating}
-          sortingOrder={sortingOrder}
-          selectedCategory={selectedCategory}
-          handleSearchChange={handleSearchChange}
-          handleColorChange={handleColorChange}
-          handleRatingChange={handleRatingChange}
-          handleSortingChange={handleSortingChange}
-          handleCategoryChange={handleCategoryChange}
-          colorOptions={colorOptions}
-          ratingOptions={ratingOptions}
-          categoryOptions={categoryOptions}
-        />
-      </div>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-      <Grid container spacing={4}>
-        {slicedData.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <Link to={`/products/${item.id}`}>
-              <div className="shadow-lg shadow-slate-500 hover:shadow-blue-800 rounded-md">
-                <div className="bg-white mx-auto p-4 flex justify-center rounded-md">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-auto h-40"
-                  />
-                </div>
-                <div className="bg-gray-200 p-4">
-                  <Typography variant="h6" className="mt-2">
-                    {item.title}
-                  </Typography>
-                  <div className="flex items-center mt-2">
-                    {item.rating} <AiFillStar color="orange" />
-                    <p className="text-gray-600 ml-2">{item.reviews}</p>
+        {loading ? (
+          <Spinner /> // Show spinner if loading
+        ) : products.length === 0 ? (
+          <Alert severity="info">No medicines found</Alert>
+        ) : (
+          <Grid container spacing={4}>
+            {products.map((product, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <Link to={`/products/${product._id}`}>
+                  <div className="h-full shadow-lg shadow-slate-500 hover:shadow-gray-700 rounded-md flex flex-col ">
+                    <div className="bg-white mx-auto p-2 flex justify-center rounded-md w-full ">
+                      <img
+                        src={`/api/images/${product.images[0].path}`}
+                        alt={product.name}
+                        className="w-full h-40 object-cover min-h-[260px] "
+                      />
+                    </div>
+                    <div className="bg-gray-200 p-4 flex-grow flex flex-col justify-between">
+                      <div>
+                        <Typography variant="h6" className="mt-2">
+                          {product.name}
+                        </Typography>
+                        <Typography variant="body2" className="text-gray-600">
+                          {product.category}
+                        </Typography>
+                        <Typography variant="body2" className="text-gray-600">
+                          &#8377; {product.price}.00 /unit
+                        </Typography>
+                      </div>
+                      <Typography variant="body2" className="text-gray-600">
+                        {product.description}
+                      </Typography>
+                    </div>
                   </div>
-                  <div className="flex justify-between mt-2 text-xl ">
-                    <p>
-                      <span className="text-2xl font-bold text-slate-900">
-                        ${item.newPrice}
-                      </span>
-                      <span className="text-sm text-slate-900 line-through">
-                        ${item.prevPrice}
-                      </span>
-                    </p>
-                    <button
-                      onClick={() => addToCart(item.id)}
-                      className="flex items-center rounded-md bg-slate-800 mr-2 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                    >
-                      Add to cart
-                      <AiOutlineShoppingCart className="ml-2" size={20} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Link>
+                </Link>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <TablePagination
-        rowsPerPageOptions={[10, 20, 30, 50]}
-        component="div"
-        count={filteredData.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage="Items per page:"
-        className="bg-opacity-60 backdrop-blur-lg flex justify-center bg-blue-200 rounded-full mt-8"
-      />
+        )}
+      </div>
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-l-md focus:outline-none"
+        >
+          <FaAngleLeft />
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-md focus:outline-none"
+        >
+          <FaAngleRight />
+        </button>
+      </div>
     </div>
   );
 };
