@@ -29,7 +29,7 @@ const Services = [
     id: 1,
     name: "Appointments",
     img: appointmentsImg,
-    link: "/appointments",
+    link: "/doctors",
   },
   {
     id: 1,

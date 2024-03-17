@@ -8,7 +8,7 @@ import Checkout from "./pages/Checkout.jsx";
 import Contact from "./pages/Contact.jsx";
 import HospitalInfo from "./pages/HospitalInfo.jsx";
 import Emergency from "./pages/Emergency.jsx";
-import Appointments from "./pages/Appointments.jsx";
+// import Appointments from "./pages/Appointments.jsx";
 import Nutrition from "./pages/Nutrition.jsx";
 import Doctors from "./pages/Doctors.jsx";
 import MyAppointments from "./pages/MyAppointments.jsx";
@@ -56,7 +56,7 @@ function App() {
               <Route path="/emergency/ride" element={<EmergencyRide />} />
               <Route path="/nutrition" element={<Nutrition />} />
               <Route path="/mental-health" element={<MentalHealth />} />
-              <Route path="/appointments" element={<Appointments />} />
+              {/* <Route path="/appointments" element={<Appointments />} /> */}
             </Routes>
             <Footer />
           </Router>
