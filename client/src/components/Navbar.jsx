@@ -37,6 +37,9 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const loginHandler = async () => {
+    loginWithRedirect();
+  };
   console.log(isAuthenticated);
 
   return (
@@ -181,9 +184,7 @@ function Navbar() {
             </>
           ) : (
             <button
-              onClick={() => {
-                loginWithRedirect();
-              }}
+              onClick={loginHandler}
               className="px-4 py-2 hover:bg-pink-800 rounded-md border-2 border-white"
             >
               <b> LOGIN</b>
