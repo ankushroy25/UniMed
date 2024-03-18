@@ -52,11 +52,26 @@ const getOrders = async (req, res, next) => {
     next(err);
   }
 };
+const deleteOrder = async (req, res, next) => {
+  try {
+    const orderId = req.params.id;
+
+    const deletedOrder = await Order.findByIdAndDelete(orderId);
+
+    if (!deletedOrder) {
+      return res.status(404).send("Order not found");
+    }
+
+    res.status(200).send("Order deleted successfully");
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   getUserOrders,
   getOrder,
   createOrder,
-
   getOrders,
+  deleteOrder,
 };
