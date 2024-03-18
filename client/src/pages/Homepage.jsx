@@ -12,22 +12,19 @@ const Homepage = () => {
     const migrateUser = async () => {
       if (user) {
         try {
-          const response = await fetch(
-            "http://localhost:5000/api/users/register",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                name: user.given_name,
-                lastName: user.family_name,
-                email: user.email,
-                password: user.sub,
-                phoneNumber: "983274312",
-              }),
-            }
-          );
+          const response = await fetch("/api/users/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: user.given_name,
+              lastName: user.family_name,
+              email: user.email,
+              password: user.sub,
+              //phoneNumber: "983274312",
+            }),
+          });
 
           if (!response.ok) {
             const status = await response;

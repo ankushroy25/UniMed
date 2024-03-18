@@ -117,14 +117,14 @@ const Products = () => {
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <Link to={`/products/${product._id}`}>
                   <div className="h-full shadow-lg shadow-slate-500 hover:shadow-gray-700 rounded-md flex flex-col ">
-                    <div className="bg-white mx-auto p-2 flex justify-center rounded-md w-full ">
+                    <div className="bg-white mx-auto p-2 flex justify-center rounded-t-lg overflow-hidden w-full ">
                       <img
                         src={`/api/images/${product.images[0].path}`}
                         alt={product.name}
                         className="w-full h-40 object-cover min-h-[260px] "
                       />
                     </div>
-                    <div className="bg-gray-200 p-4 flex-grow flex flex-col justify-between">
+                    <div className="bg-gray-200 p-4 flex-grow flex flex-col justify-between rounded-md">
                       <div>
                         <Typography variant="h6" className="mt-2">
                           {product.name}

@@ -15,8 +15,8 @@ const Banner = () => {
                     alt="image"
                   /> */}
                 </div>
-                <div className="mb-12 md:mt-12 lg:mt-0 lg:mb-0">
-                  <div className="relative z-[1] block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[30px] dark:bg-[hsla(0,0%,5%,0.15)] dark:shadow-black/50 md:px-12 lg:-ml-14">
+                <div className="mb-12 md:mt-12 lg:mt-0 lg:mb-0 mx-auto">
+                  <div className="relative z-[1] block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[30px] dark:bg-[hsla(0,0%,5%,0.15)] dark:shadow-black/50 md:px-12 lg:-ml-14 ">
                     <h2 className="mb-16 text-3xl font-bold">
                       Trusted by the best companies <br />
                       <span className="">around the world</span>

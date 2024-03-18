@@ -108,19 +108,19 @@ const Doctors = () => {
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <Link to={`/doctors/${doctor._id}`}>
                   <div className="h-full shadow-lg shadow-slate-500 hover:shadow-gray-700 rounded-md flex flex-col ">
-                    <div className="bg-white mx-auto p-2 flex justify-center rounded-md w-full ">
+                    <div className=" mx-auto overflow-hidden flex justify-center rounded-t-lg w-full ">
                       <img
                         src={`/api/images/${doctor.profileImage}`}
                         alt={doctor.name}
                         className="w-full h-40 object-cover min-h-[260px] "
                       />
                     </div>
-                    <div className="bg-gray-200 p-4 flex-grow flex flex-col justify-between">
-                      <div>
+                    <div className="bg-gray-200 p-4 flex-grow flex flex-col justify-between rounded-md">
+                      <div className="flex flex-col gap-1">
                         <Typography variant="h6" className="mt-2">
                           {doctor.name}
                         </Typography>
-                        <Typography variant="body2" className="text-gray-600">
+                        <Typography variant="body2" className=" ">
                           {doctor.specialty}
                         </Typography>
                         <Typography variant="body2" className="text-gray-600">

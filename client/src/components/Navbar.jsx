@@ -174,6 +174,18 @@ function Navbar() {
                       <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
                   </Link>
+                  <Link to="/my-appointments">
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">
+                        My Appointments
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  <Link to="/my-orders">
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">My Orders</Typography>
+                    </MenuItem>
+                  </Link>
                   <MenuItem
                     onClick={() => logout({ returnTo: window.location.origin })}
                   >
