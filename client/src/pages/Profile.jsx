@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 const EditableProfile = () => {
   const { user } = useAuth0();
 
-  console.log(user);
+  // console.log(user);
 
   // const initialImage = localStorage.getItem("profileImage") || null;
 
@@ -63,6 +64,14 @@ const EditableProfile = () => {
             className="w-48 h-48 mx-auto object-cover border-2 border-gray-400 rounded-full mb-4"
             alt=""
           />
+        </div>
+        <div className="flex flex-wrap justify-around my-4">
+          <div className="rounded-full bg-gray-100 px-4 py-2">
+            <Link to="/my-orders">My orders</Link>
+          </div>
+          <div className="rounded-full bg-gray-100 px-4 py-2">
+            <Link to="/my-appointments">My orders</Link>
+          </div>
         </div>
         <div className="border-t border-gray-200">
           <dl className="">

@@ -33,7 +33,7 @@ const About = () => {
                 we call life, our group is here to ensure that you get the
                 execution that you require from your apparatus. Regardless of
                 whether you are difficult to fit or have explicit requirements,
-                let <b> ShopShoe.com</b> enable you to make progress toward your
+                let <b> UniMed.com</b> enable you to make progress toward your
                 objective.
               </p>
             </div>

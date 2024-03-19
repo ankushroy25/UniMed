@@ -74,18 +74,18 @@ const Doctors = () => {
     <div className="py-8 px-16 min-h-[700px] flex flex-col justify-between">
       <div>
         <div className="py-4 mb-4 mx-auto lg:flex lg:flex-row justify-center shadow-gray-400 shadow-md bg-slate-600 rounded-md">
-          <div>
+          <div className="">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Doctors"
-              className="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4"
+              className="px-4 my-1 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4"
             />
             <select
               value={selectedSpecialty}
               onChange={(e) => setSelectedSpecialty(e.target.value)}
-              className="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 my-1 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Specialties</option>
 

@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bottom-0 left-0 right-0">
       <footer className="bg-white dark:bg-gray-900 ">
-        <div className="container mx-auto px-6 py-20">
+        <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div className="sm:col-span-2">
               <h1 className="max-w-lg text-3xl font-semibold tracking-tight text-gray-800 dark:text-white xl:text-4xl">
@@ -29,12 +30,12 @@ const Footer = () => {
               </p>
 
               <div className="mt-5 flex flex-col items-start space-y-2">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline dark:text-gray-300 dark:hover:text-blue-400"
                 >
                   Home
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline dark:text-gray-300 dark:hover:text-blue-400"
@@ -85,7 +86,7 @@ const Footer = () => {
               href="#"
               className="text-2xl font-bold text-gray-800 transition-colors duration-300 hover:text-gray-700 dark:text-white dark:hover:text-gray-300"
             >
-              ShopShoe
+              UniMed ©️ 2024 - Cryptex
             </a>
 
             <div className="-mx-2 flex">

@@ -77,7 +77,7 @@ const DoctorDetailPage = () => {
             alt={doctor.name}
             className="w-80 h-80 rounded-full shadow-xl object-cover"
           />
-          <div className="bg-gradient-to-r from-blue-200 to-blue-600 rounded-lg shadow-xl p-8 max-w-[800px]">
+          <div className="bg-gradient-to-r from-blue-200 to-blue-100 rounded-lg shadow-xl p-8 max-w-[800px]">
             <div className="text-3xl font-semibold text-gray-800 mb-4">
               {doctor.name}
             </div>
@@ -136,7 +136,7 @@ const DoctorDetailPage = () => {
                       className={`px-8 py-3 rounded text-white text-md ${
                         slot.booked
                           ? "bg-gray-500 cursor-not-allowed"
-                          : "bg-blue-500 hover:bg-blue-700"
+                          : "bg-blue-500 hover:bg-blue-900"
                       }`}
                       disabled={slot.booked}
                       onClick={() =>

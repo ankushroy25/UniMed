@@ -12,6 +12,7 @@ import {
   TableBody,
 } from "@mui/material";
 import "../App.css";
+import Spinner from "../components/Spinner";
 
 const importantNutrients = [
   "Protein",
@@ -68,6 +69,8 @@ function Nutrition() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (finalQuery) {
       fetchData(finalQuery);
     }
@@ -103,7 +106,7 @@ function Nutrition() {
       </div>
 
       {loading ? (
-        <p className="text-center">Fetching food details...</p>
+        <Spinner />
       ) : (
         <div className="flex justify-center">
           {finalQuery && (

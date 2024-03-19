@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import RideMap from "../components/RideMap";
+import Spinner from "../components/Spinner";
 
 const EmergencyRide = () => {
   const { user, isLoading } = useAuth0();
@@ -75,8 +76,6 @@ const EmergencyRide = () => {
                 <p className="my-2">Contact : {ambulanceDetails.contact}</p>
                 <p className="my-2">Booked by : {user.name}</p>
                 <p className="my-2">Email : {ambulanceDetails.bookedByUser}</p>
-
-                <p className="my-2">Email : {ambulanceDetails.bookedByUser}</p>
                 <div className="flex">
                   <div className="h-3 w-3 bg-red-500 mt-1.5 mr-2" />
                   <p className="text-sm">Ambulance</p>
@@ -89,7 +88,7 @@ const EmergencyRide = () => {
             )}
           </div>
           <div>
-            {ambulanceDetails && user ? (
+            {ambulanceDetails && user && userLocation ? (
               <>
                 <RideMap
                   ambulanceDetails={ambulanceDetails}
@@ -97,7 +96,9 @@ const EmergencyRide = () => {
                 />
               </>
             ) : (
-              <div className="br">Loading..</div>
+              <div>
+                <Spinner />
+              </div>
             )}
           </div>
         </div>
