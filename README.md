@@ -58,5 +58,4 @@ npm run dev
 
 [Ankush Roy](https://github.com/ankushroy25)
 [Meghna Dutta](https://github.com/meghnadutta02)  
-[Rohit Kr. Agarwal](https://github.com/rohitzerofour)
 [Piyush N. Shukla](https://github.com/PiyushNShukla)
